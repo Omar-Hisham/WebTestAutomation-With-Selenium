@@ -1,3 +1,7 @@
+/**
+ * This class implements TestNG ITestListener interface to perform actions based on test events.
+ * It extends the test_utilities class to utilize screenshot capture utilities.
+ */
 package base;
 
 import java.io.IOException;
@@ -12,6 +16,12 @@ import utilities.test_utilities;
 
 public class Listeners extends test_utilities implements ITestListener{
 	
+    /**
+     * Called when a test starts.
+     * 
+     * @param result The result of the test that just started.
+     */
+
 	public void onTestStart(ITestResult result) {
 			Reporter.log("Test started: \n");
 			try {
@@ -23,6 +33,12 @@ public class Listeners extends test_utilities implements ITestListener{
 				e.printStackTrace();
 			}
 		  }
+
+    /**
+     * Called when a test fails.
+     * 
+     * @param result The result of the test that failed.
+     */
 
 	public void onTestFailure(ITestResult result) {
 		Reporter.log("Test Failed: ");
@@ -37,6 +53,12 @@ public class Listeners extends test_utilities implements ITestListener{
 		
 	}
 	
+    /**
+     * Called when a test succeeds.
+     * 
+     * @param result The result of the test that succeeded.
+     */
+
 	public void onTestSuccess(ITestResult result) {
 		Reporter.log("Test Successed");
 	    System.out.println("Test Successed");
@@ -50,9 +72,5 @@ public class Listeners extends test_utilities implements ITestListener{
 	}
 
 
-	
-	
-	
-	
 
 }

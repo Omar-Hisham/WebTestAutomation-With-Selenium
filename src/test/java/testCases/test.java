@@ -1,79 +1,7 @@
-//package testCases;
-//
-//import java.util.List;
-//
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.JavascriptExecutor;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.edge.EdgeDriver;
-//
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//import java.util.concurrent.TimeUnit;
-//
-//public class test {
-//
-//	public static void main(String[] args) throws InterruptedException {
-//		// TODO Auto-generated method stub
-////		WebDriverManager.chromedriver().setup();
-////		WebDriver driver = new ChromeDriver();
-////		
-//		WebDriverManager.edgedriver().setup();
-//		WebDriver driver = new EdgeDriver();
-//
-//		driver.get("https://www.bing.com/");
-//		driver.findElement(By.id("sb_form_q")).sendKeys("Vodafone");
-//		driver.findElement(By.id("search_icon")).click();
-//	
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-//		Thread.sleep(3000);
-//		while(!driver.findElement(By.xpath("//a[@aria-label='Page 2']")).isEnabled())
-//		{
-//			System.out.println("entered");
-//			 Thread.sleep(30);
-//		}
-//			
-//		driver.findElement(By.xpath("//a[@aria-label='Page 2']")).click();	
-//			
-////		//while(c<3) {
-////		try {
-////		driver.findElement(By.xpath("//a[@aria-label='Page 2']")).click();
-////		}
-////		catch(Exception e) {
-////		System.out.println("second click"+c);
-////		driver.findElement(By.xpath("//a[@aria-label='Page 2']")).click();
-////			 Thread.sleep(1000);
-////			 c++;
-////		}
-//		
-//
-//		WebElement E = driver.findElement(By.id("b_results"));
-//	    List<WebElement> l = E.findElements(By.xpath("//li[@class='b_algo b_ccontain']"));
-//		
-//		System.out.print("The size is: "+l.size()+"\n");
-//		
-//		
-//		//li[@class='b_algo b_ccontain qbrs']
-//		
-//		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-//		driver.findElement(By.xpath("//a[@aria-label='Page 3']")).click();
-//		
-//		 E = driver.findElement(By.id("b_results"));
-//		 List<WebElement> l2 = E.findElements(By.xpath("//li[@class='b_algo b_ccontain']"));
-//			
-//		 System.out.print("The size is of 2: "+l2.size()+"\n");
-//			
-//		 
-//		//li[@class='b_algo b_ccontain qbrs']//div[@class='tpcn']
-//	driver.close();
-//	}
-//	
-//
-//}
-
-//
+/**
+ * Test cases to verify search functionality on a search engine and navigating to different pages.
+ * This class extends BaseTest class to utilize setup and teardown methods.
+ */
 package testCases;
 
 
@@ -93,9 +21,17 @@ import base.BaseTest;
 
 public class test extends BaseTest {
 
+	
+	/**
+     * Test case to perform search and verify search results pagination.
+     * 
+     * @param keyword The keyword to search for.
+     * @throws InterruptedException If the execution is interrupted while sleeping.
+     */
 	@Test(dataProvider = "data-provider" )	
 	public void testcaseone(String keyword) throws InterruptedException
 	{
+        
         	Assert.assertEquals(driver.getCurrentUrl(),URL_DATA.getProperty("HOME_PAGE_LINK"));     
             
         	driver.findElement(By.id(locator.getProperty("SEARCH_INPUT_FIELD"))).sendKeys(keyword);
